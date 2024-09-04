@@ -9,6 +9,9 @@ import axios from 'axios'
 axios.defaults.baseURL="http://localhost:4000"
 import Destinations from './components/Destinations'
 import Home from './components/Home'
+import AboutUs from './components/AboutUs'
+import Service from './components/Service'
+import ContactUs from './components/ContatctUs'
 
 function App() {
 
@@ -20,6 +23,10 @@ function App() {
   <Route path='/' element={<Home/>}/>
   <Route path='/login' element={<LoginPage/>}/>
   <Route path='/register' element={<Registerpage/>}/>
+  <Route path='/aboutUs' element={<AboutUs/>}/>
+  <Route path='/service' element={<Service/>}/>
+  <Route path='/contactUs' element={<ContactUs/>}/>
+
 
   
   </Route>

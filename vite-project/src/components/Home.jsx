@@ -8,13 +8,16 @@ import Footer from "./Footer";
 
 
 
+
 export default function Home() {
   return (
     <>
     <div className="scroll-smooth	" >
         <FirstPage/>
     <Destinations/>
+
     <Footer/>
+
     
     
     </div>

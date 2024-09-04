@@ -4,10 +4,16 @@ import { useEffect } from "react";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
+import Starrating from "./Starrating";
 
 export default function Destinations() {
+
+
+
+
+  
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 1000 });
   }, []);
 
   return (
@@ -24,35 +30,38 @@ export default function Destinations() {
               <div className="flex w-full  gap-2 flex-col border-b-2 border-black">
                 <div className="h-60 w-full overflow-hidden rounded-lg  object-fill">
                   <img
-                    data-aos="fade-up"
+                   
                     className=" w-full  hover:scale-110 overflow-hidden"
                     src={e.imgSrc}
                   />
                 </div>
-                <h3 data-aos="fade-up" className="font-bold">
+                <h3  className="font-bold">
                   {e.title}
                 </h3>
                 <div className="flex  items-center pb-2  gap-2">
                   <MdLocationOn data-aos="fade-up" />
-                  <h4 data-aos="fade-up">{e.location}</h4>
+                  <h4 className="" >{e.location}    
+                  </h4>
+                  <div> <Starrating/></div>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 justify-between border-b-2 border-black w-full p-2">
-                <div data-aos="fade-up">{e.grade}</div>
-                <div data-aos="fade-up" className="font-extrabold">
+                <div >{e.grade}</div>
+                <div  className="font-extrabold">
                   {e.fees}
                 </div>
               </div>
 
               <div
-                data-aos="fade-up"
+                
                 className="flex items-center justify-center "
               >
                 {e.description}
               </div>
               <div className="flex p-3  m-0 gap-2 font-semibold  bg-black text-white rounded-lg items-center justify-center">
                 <button>Details</button>
+                
               </div>
             </div>
           </div>

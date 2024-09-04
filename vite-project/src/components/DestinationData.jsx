@@ -101,16 +101,7 @@ const DestinationData =[
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam molestiae obcaecati voluptates.'
 
     },
-    {
-        id:10,
-        imgSrc:img10,
-        title:'Bali',
-        location:'Indoneshia',
-        grade:'Cultural Relax',
-        fees:700,
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam molestiae obcaecati voluptates.'
-
-    },
+ 
 ]
 
 export default DestinationData;

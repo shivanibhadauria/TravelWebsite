@@ -34,7 +34,7 @@ Aos.init({duration:2000})
             loop
             type="video/mp4"
           ></video>
-          <div className="absolute flex  gap-10 flex-col m-10  ">
+          <div className="absolute flex  gap-10 flex-col m-10 pt-14  ">
             <div className="py-6">
           <p data-aos="fade-up" className= "text-center  top-12 font-semibold  text-1xl text-black 	">OUR PACKAGES</p>
           <h2 data-aos="fade-up" className="text-center top-16 font-bold text-5xl text-black	">Search your holidays</h2></div>

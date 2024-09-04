@@ -1,68 +1,46 @@
-const express = require('express');
-const cors = require('cors');
-const User = require ('./models/User.js');
-const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
-const { default: mongoose } = require('mongoose');
-require('dotenv').config()
-const app = express();
+const express =require("express")
+const mongoose  = require('mongoose')
+const cors = require('cors')
 
-const bcryptSalt = bcrypt.genSaltSync(10)
-const jwtSecret = 'fgxfbgfbgfbgfbgbgvbx5t56'
-
-app.use(express.json());
-app.use(cors({
-    credentials: true,
-    origin: "http://localhost:5173",
-}));
-
-mongoose.connect(process.env.MONGO_URL); 
-
-app.get('/test', (req,res)=>{
-    res.json('test ok');
-    console.log("listining");
-
-});
-
-app.post('/register', async (req, res) =>{
-    const {name,email,password} = req.body;
-    try{
-        const userDoc = await User.create({
-            name,
-            email,
-            password:bcrypt.hashSync(password, bcryptSalt),
-        })
-        res.json(userDoc);
-
-    } catch(e){
-        res.status(422).json(e)
-    }
+const UserModel = require('./models/User.js');
 
 
+const app = express()
+app.use(express.json())
+app.use(cors())
 
-    
-});
+mongoose.connect("mongodb+srv://shivanibh921997:1234Shivani@travelusers.ssnlupm.mongodb.net/?retryWrites=true&w=majority&appName=travelusers");
 
-app.post('/login', async (req, res) =>{
-    const {email,password} = req.body;
-   const userDoc = await User.findOne({email})
-   if(userDoc){
+app.post("/login", (req, res)=>{
+    const {email, password} = req.body
+    UserModel.findOne({
+        email: email
+    }).then(user =>{
+        if(user){
 
-    const passOk = bcrypt.compareSync(password, userDoc.password);
-    if(passOk){
-        res.cookie('token', '').json('pass ok');
+        if(user.password === password){
+            res.json("success")
+        }else{
+            res.json("password is incorrect")
 
-    }else{
-        res.status(422).json('pass not ok')
-    }
-   } else{
-    res.json('not found')
-   }
-    
+        }}else{
+            res.json("no record existed")
+
+            
+
+        }
+    })
 
 
-
-    
 })
 
-app.listen(4000);
+app.post("/register", (req, res)=>{
+    UserModel.create(req.body)
+    .then(employees=>res.json(employees))
+    .catch(err => res.json(err))
+
+})
+
+app.listen(4000, ()=>{
+    console.log("server is running")
+})
